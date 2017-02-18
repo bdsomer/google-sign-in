@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/javacoolme/google-sign-in.svg?branch=master)](https://travis-ci.org/javacoolme/google-sign-in)
+
 #google-sign-in
+
 > node.js library for integrating with Google sign in
 
 ##Installation
