@@ -9,7 +9,7 @@
     npm install google-sign-in
 ##Usage Example
 
-	var GoogleSignIn = require("./index.js");
+	var GoogleSignIn = require("google-sign-in");
 	var project = new GoogleSignIn.Project(["your-client-id.apps.googleusercontent.com"]);
 	project.verifyToken("client-id-token", function(err, data) {
 		if (err) {
