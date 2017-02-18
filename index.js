@@ -7,7 +7,7 @@ class Project {
 		this.clientIds = clientIds;
 	}
 
-	verifyLoginToken(idToken, callback) {
+	verifyToken(idToken, callback) {
 		var req = https.get({
 			"hostname" : "www.googleapis.com",
 			"path" : "/oauth2/v3/tokeninfo?id_token=" + idToken,
