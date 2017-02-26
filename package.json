@@ -1,10 +1,15 @@
 {
 	"name" : "google-sign-in",
-	"version" : "1.0.17",
+	"version" : "2.0.0",
 	"main" : "index.js",
 	"license" : "MIT",
 	"repository" : {
 		"type" : "git",
 		"url" : "https://github.com/javacoolme/google-sign-in/"
+	},
+	"description" : "node.js library for integrating with Google sign in",
+	"keywords" : ["google", "sign", "in", "sign in", "signin", "auth", "authentication", "login", "log", "in", "log in"],
+	"scripts" : {
+		"test" : "node test.js"
 	}
 }
