@@ -11,5 +11,8 @@
 	"keywords" : ["google", "sign", "in", "sign in", "signin", "auth", "authentication", "login", "log", "in", "log in"],
 	"scripts" : {
 		"test" : "node test.js"
+	},
+	"engines" : {
+		"node" : ">=7.2.1"
 	}
 }

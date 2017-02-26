@@ -11,7 +11,7 @@
 /*jslint node: true*/
 "use strict";
 
-var https = require("https");
+const https = require("https");
 
 class Project {
 	constructor(clientIds) {
@@ -22,7 +22,7 @@ class Project {
 
 		// Declare the promise to return
 
-		var promise = new Promise(function(resolve, reject) {
+		const promise = new Promise(function(resolve, reject) {
 
 			// Construct a get request
 
@@ -52,7 +52,7 @@ class Project {
 
 						// Parse data
 
-						var jsonData = JSON.parse(data);
+						const jsonData = JSON.parse(data);
 						if (jsonData.hasOwnProperty("error_description")) { // Check for an error returned by Gogle
 							reject(Error(jsonData.error_description));
 						} else if (this.clientIds.indexOf(jsonData.aud) === -1) { // Verify that the token is for the correct project

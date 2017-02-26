@@ -8,4 +8,4 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-"use strict";var GoogleSignIn=require("./index.js");var project=new GoogleSignIn.Project(["your-client-id.apps.googleusercontent.com"]);project.verifyToken("token").then(function(jsonData){console.log(JSON.stringify(jsonData))},function(error){console.log(error.message)});
+"use strict";var a=require("./index.js");var project=new a.Project([""]);project.verifyToken("").then(function(){},function(){});
