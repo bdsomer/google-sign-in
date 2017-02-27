@@ -15,7 +15,7 @@ const https = require("https");
 
 class Project {
 	constructor() {
-		this.clientIds = arguments.length === 1 ? arguments[0] : arguments
+		this.clientIds = arguments.length === 1 ? arguments[0] : arguments;
 	}
 
 	verifyToken(idToken) {
