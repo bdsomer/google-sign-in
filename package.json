@@ -1,6 +1,6 @@
 {
 	"name" : "google-sign-in",
-	"version" : "2.0.0",
+	"version" : "2.1.0",
 	"main" : "index.js",
 	"license" : "MIT",
 	"repository" : {
@@ -13,6 +13,6 @@
 		"test" : "node test.js"
 	},
 	"engines" : {
-		"node" : ">=6.1.0"
+		"node" : ">=4.0.0"
 	}
 }

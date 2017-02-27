@@ -14,8 +14,8 @@
 const https = require("https");
 
 class Project {
-	constructor(clientIds) {
-		this.clientIds = clientIds;
+	constructor() {
+		this.clientIds = arguments.length === 1 ? arguments[0] : arguments
 	}
 
 	verifyToken(idToken) {
@@ -54,11 +54,11 @@ class Project {
 
 						const jsonData = JSON.parse(data);
 						if (jsonData.hasOwnProperty("error_description")) { // Check for an error returned by Gogle
-							reject(Error(jsonData.error_description));
+							reject(new Error(jsonData.error_description));
 						} else if (this.clientIds.indexOf(jsonData.aud) === -1) { // Verify that the token is for the correct project
-							reject(Error("The \"aud\" claim does not match a client ID."));
+							reject(new Error("The \"aud\" claim does not match a client ID."));
 						} else if (new Date(jsonData.exp) < new Date()) { // Verify that the token is not expired
-							reject(Error("The \"exp\" claim has expired."));
+							reject(new Error("The \"exp\" claim has expired."));
 						} else { // Resolve with data if all goes well
 							resolve(jsonData);
 						}
