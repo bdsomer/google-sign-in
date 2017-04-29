@@ -14,8 +14,8 @@
 const https = require("https");
 
 class Project {
-	constructor() {
-		this.clientIds = arguments.length === 1 ? arguments[0] : arguments;
+	constructor(...args) {
+		this.clientIds = args.length === 1 ? args[0] : args;
 	}
 
 	verifyToken(idToken) {
@@ -66,7 +66,7 @@ class Project {
 						reject(err); // Reject in case of JSON parse error
 					}
 				});
-			}).on("error", function(error) {
+			}).on("error", error => {
 				reject(error); // Reject in case of request error
 			});
 		});

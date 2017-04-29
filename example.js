@@ -18,8 +18,8 @@ var project = new GoogleSignIn.Project("your-client-id.apps.googleusercontent.co
 
 // Verify a token
 
-project.verifyToken("token").then(function(jsonData) {
+project.verifyToken("token").then(jsonData => {
 	console.log(JSON.stringify(jsonData)); // Does not execute
-}, function(error) {
+}, error => {
 	console.log(error.message); // Prints "Invalid Value"
 });
