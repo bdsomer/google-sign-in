@@ -95,7 +95,7 @@ class Project {
 						zlib.gunzip(data, (err, compressedData) => {
 							returnData(err, compressedData);
 						});
-					} else if (compressedMethod === 'deflate') {
+					} else if (compressionMethod === 'deflate') {
 						zlib.inflate(data, (err, compressedData) => {
 							returnData(err, compressedData);
 						});
