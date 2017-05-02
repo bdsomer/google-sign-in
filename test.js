@@ -8,4 +8,17 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-'use strict';var a=require('./index.js');var project=new a.Project(['']);project.verifyToken('').then(()=>{},()=>{});
+'use strict';
+
+// Initialize a project
+
+var GoogleSignIn = require('./index.js'),
+assert = require('assert');
+var project = new GoogleSignIn.Project('your-client-id.apps.googleusercontent.com', 'your-other-client-id.apps.googleusercontent.com');
+
+// Verify a token
+
+project.verifyToken('token').then((jsonData) => {
+}, (error) => {
+	assert.strictEqual(error.message, 'Invalid Value');
+});
