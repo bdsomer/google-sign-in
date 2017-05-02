@@ -103,7 +103,7 @@ class Project {
 
 						// If the data was not compressed, return the data without error
 
-						returnData(null, compressedData);
+						returnData(null, data);
 					}
 					
 				});
