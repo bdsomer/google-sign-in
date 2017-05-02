@@ -8,65 +8,106 @@
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-/*jslint node: true*/
-"use strict";
+'use strict';
 
-const https = require("https");
+const https = require('https'),
+zlib = require('zlib');
 
 class Project {
-	constructor() {
-		this.clientIds = arguments.length === 1 ? arguments[0] : arguments;
+	constructor(...clientIds) {
+		this.clientIds = clientIds;
 	}
 
 	verifyToken(idToken) {
 
 		// Declare the promise to return
 
-		const promise = new Promise(function(resolve, reject) {
+		const promise = new Promise((resolve, reject) => {
 
 			// Construct a get request
 
 			https.get({
-				"hostname" : "www.googleapis.com",
-				"path" : "/oauth2/v3/tokeninfo?id_token=" + idToken,
-				"headers" : {
-					"Accept" : "application/json"
+				'hostname' : 'www.googleapis.com',
+				'path' : '/oauth2/v3/tokeninfo?id_token=' + idToken,
+				'headers' : {
+					'Accept' : 'application/json',
+					'Accept-Encoding' : 'gzip, deflate'
 				}
 			}, (res) => { // Callback function
 
-				// Set encoding
-
-				res.setEncoding("utf8");
-
 				// Get data
 
-				var data = "";
-				res.on("data", (chunk) => {
-					data += chunk;
+				var data = new Buffer('');
+				res.on('data', (chunk) => {
+					data = Buffer.concat([data, chunk]);
 				});
 
 				// Callback function
 
-				res.on("end", () => {
-					try { // Try-catch statement in case of JSON parse error
+				res.on('end', () => {
 
-						// Parse data
+					// Create a function to return the new data
 
-						const jsonData = JSON.parse(data);
-						if (jsonData.hasOwnProperty("error_description")) { // Check for an error returned by Gogle
-							reject(new Error(jsonData.error_description));
-						} else if (this.clientIds.indexOf(jsonData.aud) === -1) { // Verify that the token is for the correct project
-							reject(new Error("The \"aud\" claim does not match a client ID."));
-						} else if (new Date(jsonData.exp) < new Date()) { // Verify that the token is not expired
-							reject(new Error("The \"exp\" claim has expired."));
-						} else { // Resolve with data if all goes well
-							resolve(jsonData);
+					const returnData = (err, newData) => {
+						
+						// Check for an error
+
+						if (err) {
+							reject(err);
+						} else {
+
+							// Try - catch for a parse error
+
+							try {
+
+								// Parse data
+
+								const jsonData = JSON.parse(newData);
+
+								// Check for errors
+
+								if (jsonData.hasOwnProperty('error_description')) { // Check for an error returned by Gogle
+									reject(new Error(jsonData.error_description));
+								} else if (this.clientIds.indexOf(jsonData.aud) === -1) { // Verify that the token is for the correct project
+									reject(new Error('The \'aud\' claim does not match a client ID.'));
+								} else if (new Date(jsonData.exp) < new Date()) { // Verify that the token is not expired
+									reject(new Error('The \'exp\' claim has expired.'));
+								} else { // Resolve with data if all goes well
+									return jsonData;
+								}
+
+								// Resolve with the parsed object
+
+								resolve(jsonData);
+							} catch (parseError) {
+								reject(parseError);
+							}
 						}
-					} catch (err) {
-						reject(err); // Reject in case of JSON parse error
+					};
+
+					// Check the copression method used
+
+					const compressionMethod = res.headers['content-encoding'];
+
+					// Decompress the data
+
+					if (compressionMethod === 'gzip') {
+						zlib.gunzip(data, (err, compressedData) => {
+							returnData(err, compressedData);
+						});
+					} else if (compressedMethod === 'deflate') {
+						zlib.inflate(data, (err, compressedData) => {
+							returnData(err, compressedData);
+						});
+					} else {
+
+						// If the data was not compressed, return the data without error
+
+						returnData(null, compressedData);
 					}
+					
 				});
-			}).on("error", function(error) {
+			}).on('error', (error) => {
 				reject(error); // Reject in case of request error
 			});
 		});
@@ -75,6 +116,4 @@ class Project {
 	}
 }
 
-module.exports = {
-	"Project" : Project
-};
+module.exports = { Project };

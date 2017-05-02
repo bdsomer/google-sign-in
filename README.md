@@ -20,15 +20,15 @@ npm install google-sign-in
 ```javascript
 // Initialize a project
 
-var GoogleSignIn = require("google-sign-in");
-var project = new GoogleSignIn.Project("your-client-id.apps.googleusercontent.com", "your-other-client-id.apps.googleusercontent.com");
+var GoogleSignIn = require('google-sign-in');
+var project = new GoogleSignIn.Project('your-client-id.apps.googleusercontent.com', 'your-other-client-id.apps.googleusercontent.com');
 
 // Verify a token
 
-project.verifyToken("token").then(function(jsonData) {
-  console.log(JSON.stringify(jsonData)); // Does not execute
-}, function(error) {
-  console.log(error.message); // Prints "Invalid Value"
+project.verifyToken('token').then((jsonData) => {
+	console.log(JSON.stringify(jsonData)); // Does not execute
+}, (error) => {
+	console.error(error.message); // Logs 'Invalid Value'
 });
 ```
 
@@ -36,14 +36,14 @@ project.verifyToken("token").then(function(jsonData) {
 
 #### `Project` - Class
 - `constructor(clientIds)` - *constructor* - Creates a new `Project` with the specified `clientIds`
-  - `clientIds` - ***required*** *string* *array* - Valid client IDs from the Google Developers project seperated by commas or an array
+  - `clientIds` - ***required*** *string...* - Valid client IDs from the Google Developers project seperated by commas or an array
 - `verifyToken(idToken)` - *function* - Verifies an ID token
   - `idToken` - ***required*** *string* - The ID token to verify
-  - **returns** a promise object
+  - **returns** a promise
     - Rejects with an error object if an error occurs
     - Resolves with a JSON object if everything goes well
       - Documentation on this object can be found [here](https://developers.google.com/identity/sign-in/web/backend-auth#calling-the-tokeninfo-endpoint "data object documentation").
-- `clientIds` - *string* *array* - List of client IDs
+- `clientIds` - *string[]* - List of client IDs
 
 ## Purpose
 
