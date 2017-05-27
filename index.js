@@ -73,12 +73,8 @@ class Project {
 								} else if (new Date(jsonData.exp) < new Date()) { // Verify that the token is not expired
 									reject(new Error('The \'exp\' claim has expired.'));
 								} else { // Resolve with data if all goes well
-									return jsonData;
+									resolve(jsonData);
 								}
-
-								// Resolve with the parsed object
-
-								resolve(jsonData);
 							} catch (parseError) {
 								reject(parseError);
 							}
