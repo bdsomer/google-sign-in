@@ -18,7 +18,7 @@ var project = new GoogleSignIn.Project('your-client-id.apps.googleusercontent.co
 
 // Verify a token
 
-project.verifyToken('token').then((jsonData) => {
+project.verifyToken('token').then(() => {
 }, (error) => {
 	assert.strictEqual(error.message, 'Invalid Value');
 });
