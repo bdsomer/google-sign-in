@@ -5,7 +5,7 @@
 	"license" : "MIT",
 	"repository" : {
 		"type" : "git",
-		"url" : "https://github.com/javacoolme/google-sign-in/"
+		"url" : "https://github.com/bdsomer/google-sign-in/"
 	},
 	"description" : "node.js library for integrating with Google sign in",
 	"keywords" : ["google", "sign", "in", "sign in", "signin", "auth", "authentication", "login", "log", "in", "log in"],
