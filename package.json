@@ -1,18 +1,30 @@
 {
-	"name" : "google-sign-in",
-	"version" : "3.0.2",
-	"main" : "index.js",
-	"license" : "MIT",
-	"repository" : {
-		"type" : "git",
-		"url" : "https://github.com/bdsomer/google-sign-in/"
+	"name": "google-sign-in",
+	"version": "3.0.3",
+	"main": "index.js",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/bdsomer/google-sign-in/"
 	},
-	"description" : "node.js library for integrating with Google sign in",
-	"keywords" : ["google", "sign", "in", "sign in", "signin", "auth", "authentication", "login", "log", "in", "log in"],
-	"scripts" : {
-		"test" : "node test.js"
+	"description": "node.js library for integrating with Google sign in",
+	"keywords": [
+		"google",
+		"sign",
+		"in",
+		"sign in",
+		"signin",
+		"auth",
+		"authentication",
+		"login",
+		"log",
+		"in",
+		"log in"
+	],
+	"scripts": {
+		"test": "node test.js"
 	},
-	"engines" : {
-		"node" : ">=6.0.0"
+	"engines": {
+		"node": ">=6.0.0"
 	}
 }
