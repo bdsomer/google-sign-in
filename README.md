@@ -1,10 +1,11 @@
+# Deprecation Notice
+This package is no longer maintained. Use the official [google-auth-library](https://www.npmjs.com/package/google-auth-library) instead.
+
 # google-sign-in
 
 > node.js library for integrating with Google sign in
 
 [![google-sign-in on NPM](https://nodei.co/npm/google-sign-in.png)](https://www.npmjs.com/package/google-sign-in)
-
-[![Build Status](https://travis-ci.org/bdsomer/google-sign-in.svg?branch=master)](https://travis-ci.org/bdsomer/google-sign-in) ![google-sign-in's Total Downloads on NPM](https://img.shields.io/npm/dt/google-sign-in.svg) ![google-sign-in's Version on NPM](https://img.shields.io/npm/v/google-sign-in.svg) [![bitHound Overall Score](https://www.bithound.io/github/bdsomer/google-sign-in/badges/score.svg)](https://www.bithound.io/github/bdsomer/google-sign-in) [![bitHound Code](https://www.bithound.io/github/bdsomer/google-sign-in/badges/code.svg)](https://www.bithound.io/github/bdsomer/google-sign-in) [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/733/badge)](https://bestpractices.coreinfrastructure.org/projects/733) [![Dependencies](https://www.bithound.io/github/bdsomer/google-sign-in/badges/dependencies.svg)](https://www.bithound.io/github/bdsomer/google-sign-in/master/dependencies/npm) [![Dev Dependencies](https://www.bithound.io/github/bdsomer/google-sign-in/badges/devDependencies.svg)](https://www.bithound.io/github/bdsomer/google-sign-in/master/dependencies/npm) [![Known Vulnerabilities](https://snyk.io/test/github/bdsomer/google-sign-in/badge.svg)](https://snyk.io/test/github/bdsomer/google-sign-in) ![google-sign-in's License](https://img.shields.io/npm/l/google-sign-in.svg) ![google-sign-in's Stars on GitHub](https://img.shields.io/github/stars/bdsomer/google-sign-in.svg?style=social&label=Star)
 
 ---
 
